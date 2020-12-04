@@ -2,7 +2,7 @@
   <div id="app">
     <PostForm />
     <h2>Number of posts: {{ postsCount }}</h2>
-    <div class="post" v-for="post in allPosts" :key="post.id">
+    <div class="post" v-for="post in validPosts" :key="post.id">
       <h2>{{ post.title }}</h2>
       <p>{{ post.body }}</p>
     </div>
@@ -15,7 +15,7 @@ import PostForm from "./components/PostForm";
 export default {
   name: "App",
   // access getter form the store:
-  computed: mapGetters(["allPosts", "postsCount"]),
+  computed: mapGetters(["validPosts", "postsCount"]),
   // another variant to access the getters from the store:
   // computed: {
   //   allPosts() {
