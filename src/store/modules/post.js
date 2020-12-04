@@ -18,6 +18,9 @@ export default {
     // first parameter is always state, second: what we will provide to it
     updatePosts(state, posts) {
       state.posts = posts;
+    },
+    createPost(state, newPost) {
+      state.posts.unshift(newPost);
     }
   },
   // initial data and all the data available in the app:
