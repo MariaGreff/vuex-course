@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <h2>Number of posts: {{ postsCount }}</h2>
     <div class="post" v-for="post in allPosts" :key="post.id">
       <h2>{{ post.title }}</h2>
       <p>{{ post.body }}</p>
@@ -8,20 +9,23 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 export default {
   name: "App",
-  // access getter form the store
-  computed: mapGetters(["allPosts"]),
+  // access getter form the store:
+  computed: mapGetters(["allPosts", "postsCount"]),
   // another variant to access the getters from the store:
   // computed: {
   //   allPosts() {
   //     return this.$store.getters.allPosts;
   //   }
   // },
+  methods: mapActions(["fetchPosts"]),
   async mounted() {
-    // call dispatch method to call the action (pass name of the action as a parameter)
-    this.$store.dispatch("fetchPosts");
+    // call dispatch method to call the action (pass name of the action as a parameter):
+    this.fetchPosts(4);
+    // another variant of dispatching the action
+    // this.$store.dispatch("fetchPosts");
   }
 };
 </script>
